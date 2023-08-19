@@ -1,1 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+    padding: 15px;
+}
+
+table {
+    width: 100%;
+}
+
+tr.table-detail-row{
+    height: 0;
+}
+
+tr.table-element-row:not(.table-expanded-row):hover {
+    background: whitesmoke;
+}
+
+tr.table-element-row:not(.table-expanded-row):active {
+    background: #efefef;
+}
+
+.table-element-row td {
+    border-bottom-width: 0;
+}
+
+.table-element-detail {
+    overflow: hidden;
+    display: flex;
+}
+
+.table-element-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+    display: none;
+}
+
+.table-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+}
+
+.table-element-description {
+    padding: 16px;
+}
+
+.table-element-description-attribution {
+    opacity: 0.5;
+}
