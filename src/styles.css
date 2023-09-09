@@ -62,3 +62,21 @@ tr.table-element-row:not(.table-expanded-row):active {
 .table-element-description-attribution {
     opacity: 0.5;
 }
+
+/*Formularios Validaciones*/
+input.ng-valid.ng-touched{
+    border-left: 2px solid rgb(3, 156, 3);
+    padding-left: 2px;
+}
+
+input.ng-invalid.ng-touched{
+    border-left: 2px solid rgba(180, 11, 11, 0.671);
+    padding-left: 2px;
+}
+
+mat-label {
+    padding-left: 3px;
+}
+
+  
+  

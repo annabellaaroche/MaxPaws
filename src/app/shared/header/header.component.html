@@ -1,0 +1,83 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+<mat-toolbar color="primary" class="toolbar">
+ <!--<button mat-icon-button aria-label="Abre/Cierra el menú" (click)="toggleSidenav()">
+    <mat-icon aria-hidden="showSidenav" aria-label="Sidenav" [fontIcon]="(this.sidenavToggle) ? 'close':'menu'">
+    </mat-icon>
+  </button>--> 
+  <span routerLink="home" class="logo-link"> <img src="https://media.canva.com/1/image-resize/1/500_500_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS9iNGp1VS9NQUZ0TE5iNGp1VS8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAI-CaCH9ucZxmYJNCZK-VqZfYSWGJ23r0dvdaA_9wJ16&exp=1693997967&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAP0hKd0ZNwPF0Ups93ME8pvXWNEiwC-Y-GiRs9R-lopk" alt=""   width="10%" > MaxPaws</span>
+  <span class="spacer"></span>
+  <button class="toolbar-menu-option" routerLink="appointments" mat-button aria-label="Consulta tus citas" *ngIf="userLoginOn">
+    Citas
+  </button>
+  <button class="toolbar-menu-option" routerLink="vaccines" mat-button aria-label="Consulta tus vacunas" *ngIf="userLoginOn">
+    Vacunas
+  </button>
+  <button class="toolbar-menu-option" routerLink="recommendations" mat-button
+    aria-label="Consulta nuestras recomendaciones" *ngIf="userLoginOn">
+    Recomendaciones
+  </button>
+
+  <ng-container *ngIf="userLoginOn">
+    <button mat-icon-button aria-label="Tu perfil" [matMenuTriggerFor]="account_menu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+
+    <button mat-icon-button aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #account_menu="matMenu" >
+      <button mat-menu-item routerLink="account">
+        <mat-icon>account_circle</mat-icon>
+        <span>Ver cuenta</span>
+      </button>
+      <button mat-menu-item routerLink="account/edit/5">
+        <mat-icon>edit</mat-icon>
+        <span>Editar cuenta</span>
+      </button>
+      <button mat-menu-item routerLink="logout">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Cerrar sesión</span>
+      </button>
+    </mat-menu> 
+</ng-container>
+<ng-container *ngIf="!userLoginOn">
+  <button mat-icon-button aria-label="Tu perfil" [matMenuTriggerFor]="account_menu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+  <button mat-icon-button aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #account_menu="matMenu" >
+    <button mat-menu-item routerLink="login">
+      <mat-icon>arrow_right_alt</mat-icon>
+      <span>Iniciar sesión</span>
+    </button>
+    <button mat-menu-item routerLink="register">
+      <mat-icon>person_add</mat-icon>
+      <span>Registrarse</span>
+    </button>
+  </mat-menu> 
+</ng-container>
+</mat-toolbar>
+<!-- <mat-drawer-container class="sidenav-container">
+  <mat-drawer class="sidenav-content" mode="side" [opened]="this.sidenavToggle" [style.width]="20%">
+    <ol>
+      <li><a id="link" href="#">Options</a></li>
+      <li><a id="link" href="#">Help</a></li>
+      <li><a id="link" href="#">About</a></li>
+    </ol>
+
+  </mat-drawer>
+  <mat-drawer-content class="page-content">
+    <button style="visibility: hidden;" (click)="toggleDev()" id="divdevbutton"></button>
+    <div class="dev" id="divdev" *ngIf="dev">
+      <p>
+        this.sidenavToggle = {{this.sidenavToggle}}
+      </p>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>-->
+

@@ -1,0 +1,9 @@
+.example-card {
+  max-width: 400px;
+}
+
+.card-images{
+  max-height: 50%;
+  max-width: 60%;
+  position: relative;
+}
