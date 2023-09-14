@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
-import { LoginService } from 'src/app/services/auth/login.service';
+import { ApiService } from 'src/app/services/api.service';
+import { LoginService } from 'src/app/services/auth/LoginService';
 
 
 @Component({
@@ -22,14 +23,7 @@ export class LoginComponent {
     password:['', Validators.required],
   })
 
-registerForm = this.fb.group({
-  email: 'annabella.aroche@gmail.com',
-  password:'123456',
-  user_name:'aarochem1',
-  first_name: 'Annabellaas',
-  last_name: 'aroches',
-})
-  constructor(private fb: FormBuilder, private router:Router, private loginService:LoginService) { }
+  constructor(private fb: FormBuilder, private router:Router, private loginService:LoginService, private apiService: ApiService) { }
 
 
   onSubmit(): void {
@@ -49,15 +43,11 @@ registerForm = this.fb.group({
           this.loginForm.reset();
         }
       });
-
-/*      this.loginService.register(this.registerForm.value as User).subscribe({
-        next:(userData)=>{
-          console.log(userData);
-        },
-        error:(errorData)=>{
-          console.error(errorData);
+      this.apiService.Owner().subscribe({
+        next:(ownerData)=>{
+          console.log(ownerData);
         }
-      })*/
+      });
     }else{
       this.loginForm.markAllAsTouched();
     }
