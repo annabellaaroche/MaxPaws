@@ -1,5 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { SpinnerService } from './services/spinner.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   title = 'MaxPaws';
   sidenavToggle = true;
   dev = false;
-
+  spinnerService = inject(SpinnerService);
   
   toggleSidenav(){
     this.sidenavToggle = !this.sidenavToggle;
@@ -23,5 +24,9 @@ export class AppComponent {
   private devLog(message=''){
     let dev = document.getElementById('divdev');
     if(dev) dev.innerHTML += `<p>${message}</p>`;
+  }
+  constructor(){
+    let spinnerService = inject(SpinnerService);
+    spinnerService.hide()
   }
 }

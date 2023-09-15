@@ -6,8 +6,13 @@
     <mat-icon aria-hidden="showSidenav" aria-label="Sidenav" [fontIcon]="(this.sidenavToggle) ? 'close':'menu'">
     </mat-icon>
   </button>--> 
-  <span routerLink="home" class="logo-link"> <img src="https://media.canva.com/1/image-resize/1/500_500_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS9iNGp1VS9NQUZ0TE5iNGp1VS8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAI-CaCH9ucZxmYJNCZK-VqZfYSWGJ23r0dvdaA_9wJ16&exp=1693997967&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAP0hKd0ZNwPF0Ups93ME8pvXWNEiwC-Y-GiRs9R-lopk" alt=""   width="10%" > MaxPaws</span>
+
+  <span routerLink="home" class="logo-link" *ngIf="userLoginOn"> <img src="https://media.canva.com/1/image-resize/1/500_500_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS9iNGp1VS9NQUZ0TE5iNGp1VS8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAI-CaCH9ucZxmYJNCZK-VqZfYSWGJ23r0dvdaA_9wJ16&exp=1693997967&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAP0hKd0ZNwPF0Ups93ME8pvXWNEiwC-Y-GiRs9R-lopk" alt=""   width="10%" > MaxPaws</span>
+  <span routerLink="/" class="logo-link" *ngIf="!userLoginOn"> <img src="https://media.canva.com/1/image-resize/1/500_500_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS9iNGp1VS9NQUZ0TE5iNGp1VS8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAI-CaCH9ucZxmYJNCZK-VqZfYSWGJ23r0dvdaA_9wJ16&exp=1693997967&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAP0hKd0ZNwPF0Ups93ME8pvXWNEiwC-Y-GiRs9R-lopk" alt=""   width="10%" > MaxPaws</span>
   <span class="spacer"></span>
+  <button class="toolbar-menu-option" routerLink="home" mat-button aria-label="Home" *ngIf="userLoginOn">
+    Home
+  </button>
   <button class="toolbar-menu-option" routerLink="appointments" mat-button aria-label="Consulta tus citas" *ngIf="userLoginOn">
     Citas
   </button>
@@ -36,7 +41,7 @@
         <mat-icon>edit</mat-icon>
         <span>Editar cuenta</span>
       </button>
-      <button mat-menu-item routerLink="logout">
+      <button mat-menu-item (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
         <span>Cerrar sesión</span>
       </button>

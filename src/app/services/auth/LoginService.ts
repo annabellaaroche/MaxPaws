@@ -1,27 +1,28 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, tap, throwError } from 'rxjs';
+import { Observable, catchError, tap, throwError } from 'rxjs';
 import { User } from 'src/app/interfaces/user';
 import { config } from './../../config';
 import * as moment from "moment";
-import { transformMenu } from '@angular/material/menu';
+import { Route, Router } from '@angular/router';
 
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class LoginService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(user: User): Observable<User> {
     return this.http.post<User>(`${config.apiUrl}/token/`, user)
     .pipe(
-      map((response:any)=>{
+      tap((response:any)=>{
         this.setSession(response);
-        return response;
       }),
-      catchError(err => {return throwError(err);})
+      catchError(this.handleError)
     )
   }
 
@@ -33,19 +34,23 @@ export class LoginService {
   }
 
   logout(): Observable<any> {
-    return this.http.post<any>(`${config.apiUrl}/user/logout/blacklist`, this.getRefreshToken()).pipe(
+    return this.http.post<any>(`${config.apiUrl}/user/logout/backlist/`, {refresh_token: this.getRefreshToken()}).pipe(
       tap(() => {
         // Eliminar elementos del localStorage solo si la solicitud es exitosa
         localStorage.removeItem("access");
         localStorage.removeItem("refresh");
         localStorage.removeItem("expires_at");
+        localStorage.removeItem("userLoginOn");
+        this.router.navigate(["/login"])
       }),catchError(this.handleError)
     );
   }
   refreshToken(): Observable<any>{
-    return this.http.post<any>(`${config.apiUrl}/token/refresh/`, this.getRefreshToken()).pipe(
+    return this.http.post<any>(`${config.apiUrl}/token/refresh/`, {refresh: this.getRefreshToken()}).pipe(
+      tap((response:any)=>{
+        this.setSession(response);
+      }),
       catchError(this.handleError)
-      
     );
   }
   private setSession(authResult: { access: string; refresh: string; expires:string}){
@@ -53,6 +58,7 @@ export class LoginService {
     localStorage.setItem('access',authResult.access);
     localStorage.setItem('refresh',authResult.refresh);
     localStorage.setItem('expires_at',authResult.expires);
+    localStorage.setItem('userLoginOn','true');
   }
   private handleError(error: HttpErrorResponse) {
     if (error.status == 0) {
@@ -64,7 +70,6 @@ export class LoginService {
   }
 
   getToken(){
-    console.log(localStorage.getItem('access'))
     return localStorage.getItem('access');
   }
   getRefreshToken(){

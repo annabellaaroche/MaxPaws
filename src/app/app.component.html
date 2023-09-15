@@ -1,3 +1,7 @@
 <app-header></app-header>
-
+<div class="spinner-container" *ngIf="spinnerService.isVisible">
+    <!--<button (click)="spinnerService.hide()">hide</button>-->
+    <mat-spinner></mat-spinner>
+</div>
+<!--<button (click)="spinnerService.show()">show</button>-->
 <router-outlet></router-outlet>

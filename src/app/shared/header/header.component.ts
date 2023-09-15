@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from 'src/app/services/auth/LoginService';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,22 @@ export class HeaderComponent {
   sidenavToggle = true;
   dev = false;
   userLoginOn = false;
+  
 
+  constructor(private loginService: LoginService){
+    setInterval(()=>{
+      this.userLoginOn = localStorage.getItem('userLoginOn') == 'true' ? true:false;
+    },100
+    )
+  }
+  
+public logout(){
+  this.loginService.logout().subscribe(
+    (res)=>{
+      console.log("Se Cerro la Sesion")
+    }
+  );
+}
   toggleSidenav(){
     this.sidenavToggle = !this.sidenavToggle;
     this.devLog('toggle sidebar')

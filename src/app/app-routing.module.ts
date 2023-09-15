@@ -4,11 +4,13 @@ import { HomeComponent } from './pages/home/home.component';
 import { AppointmentsModule } from './pages/appointments/appointments.module'
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { sesionGuard } from './guards/sesion.guard';
 
 const routes: Routes = [
   {
     path:'home',
-    component:HomeComponent
+    component:HomeComponent,
+    canActivate:[sesionGuard]
   },
   {
     path:'login',
@@ -20,19 +22,23 @@ const routes: Routes = [
   },
   {
     path:'appointments',
-    loadChildren:() => import('./pages/appointments/appointments.module').then(m => m.AppointmentsModule)
+    loadChildren:() => import('./pages/appointments/appointments.module').then(m => m.AppointmentsModule),
+    canActivate:[sesionGuard]
   },
   {
     path:'vaccines',
-    loadChildren:() => import('./pages/vaccines/vaccines.module').then(m => m.VaccinesModule)
+    loadChildren:() => import('./pages/vaccines/vaccines.module').then(m => m.VaccinesModule),
+    canActivate:[sesionGuard]
   },
   {
     path:'recommendations',
-    loadChildren:() => import('./pages/recommendations/recommendations.module').then(m => m.RecommendationsModule)
+    loadChildren:() => import('./pages/recommendations/recommendations.module').then(m => m.RecommendationsModule),
+    canActivate:[sesionGuard]
   },
   {
     path:'account',
-    loadChildren:() => import('./pages/account/account.module').then(m => m.AccountModule)
+    loadChildren:() => import('./pages/account/account.module').then(m => m.AccountModule),
+    canActivate:[sesionGuard]
   },
 ];
 

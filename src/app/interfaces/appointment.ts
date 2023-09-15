@@ -1,7 +1,7 @@
 export interface Appointment {
-    date:Date,
-    reason:string,
-    notes:string,
-    pet:number,
-    pet_name:string,
+    fecha_cita:Date,
+    motivo_cita:string,
+    notas_cita:string,
+    mascota:number,
+    pet_name:string|null,
 }

@@ -1,13 +1,22 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
 import { Vaccine } from 'src/app/interfaces/vaccine';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-view-vaccines',
   templateUrl: './view.component.html',
-  styleUrls: ['./view.component.css']
+  styleUrls: ['./view.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class ViewComponent {
-  dataSource = ELEMENT_DATA;
+  dataSource: Vaccine[] = [];
   columnsToDisplay = ['name', 'date', 'next_date' , 'pet_name'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   columnDisplayNames: { [key: string]: string } = {
@@ -17,28 +26,13 @@ export class ViewComponent {
     pet_name: 'Nombre de la Mascota'
   };
   expandedElement: Vaccine | null | undefined;
+
+  constructor(apiService: ApiService){
+    apiService.Vacuna().subscribe(
+      (res)=>{
+        this.dataSource = res
+      }
+    );
+  }
 }
 
-const ELEMENT_DATA: Vaccine[] = [
-  {
-    name:'Vitaminas caninas',
-    date: new Date('11/1/2020'),
-    next_date: new Date('12/3/2020'),
-    pet:1,
-    pet_name:'Max'
-  },
-  {
-    name:'Antipulgas',
-    date: new Date('5/5/2021'),
-    next_date: new Date('6/6/2021'),
-    pet:1,
-    pet_name:'Max'
-  },
-  {
-    name:'Desparacitante',
-    date: new Date('7/7/2022'),
-    next_date: new Date('8/8/2022'),
-    pet:1,
-    pet_name:'Max'
-  },
-]

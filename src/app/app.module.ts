@@ -21,7 +21,9 @@ import { MatError, MatFormField, MatFormFieldModule } from '@angular/material/fo
 import { MatInput, MatInputModule } from '@angular/material/input';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './auth/register/register.component';
-import { Interceptor } from './interceptor';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { MatProgressSpinner, MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 
 
 @NgModule({
@@ -49,12 +51,20 @@ import { Interceptor } from './interceptor';
     MatInputModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatProgressSpinnerModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: Interceptor,
-    multi: true
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SpinnerInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
