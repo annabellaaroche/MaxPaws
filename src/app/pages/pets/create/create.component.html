@@ -1,0 +1,77 @@
+<div class="container text-begin">
+    <button mat-flat-button color="primary" routerLink="/home">
+        Regresar
+    </button>
+</div>
+
+<div class="container">
+    <form class="row g-0" [formGroup]="createPetForm" (ngSubmit)="submit()">
+        <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <mat-form-field class="w-100 p-1" >
+               <mat-label for="name_pet">Nombre</mat-label>
+                <input matInput  id="name_pet" placeholder="Nombre"
+                    formControlName="name_pet">
+                <mat-error *ngIf="createPetForm.get('name_pet')?.hasError('required')">
+                    El Nombre es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <mat-form-field class="w-100 p-1" (click)="picker2.open()"> 
+                <mat-label for="birth_date_pet">Fecha de Nacimiento</mat-label>
+                <input matInput [matDatepicker]="picker2" id="birth_date_pet" placeholder="Fecha de Nacimiento"
+                    formControlName="birth_date_pet">
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-error *ngIf="createPetForm.get('birth_date_pet')?.hasError('required')">
+                    La fecha es rquerida
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <mat-form-field class="w-100 p-1">
+                <mat-label for="pet_color">Color:</mat-label>
+                <input matInput id="pet_color" placeholder="Color" formControlName="pet_color">
+                <mat-error *ngIf="createPetForm.get('pet_color')?.hasError('required')">
+                    Vacuna es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <mat-form-field class="w-100 p-1">
+                <mat-label for="pet_gender">Genero:</mat-label>
+                <mat-select matInput id="pet_gender" formControlName="pet_gender">
+                    <mat-option *ngFor="let item of gender" [value]="item.id">{{item.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="createPetForm.get('pet_gender')?.hasError('required')">
+                    Genero es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <mat-form-field class="w-100 p-1">
+                <mat-label for="pet_size_id">Tamaño:</mat-label>
+                <mat-select matInput id="pet_size_id" formControlName="pet_size_id">
+                    <mat-option *ngFor="let item of size" [value]="item.id">{{item.size}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="createPetForm.get('pet_size_id')?.hasError('required')">
+                    Tamaño es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <mat-form-field class="w-100 p-1">
+                <mat-label for="raza_id">Raza:</mat-label>
+                <mat-select matInput id="raza_id" formControlName="raza_id">
+                    <mat-option *ngFor="let item of raza" [value]="item.id">{{item.raza}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="createPetForm.get('raza_id')?.hasError('required')">
+                    Raza es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <button type="submit" mat-flat-button color="primary">Guardar</button>
+        </div>
+    </form>
+</div>

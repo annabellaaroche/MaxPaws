@@ -24,6 +24,10 @@ import { RegisterComponent } from './auth/register/register.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { MatProgressSpinner, MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { AboutComponent } from './pages/about/about.component';
 
 
 @NgModule({
@@ -33,6 +37,8 @@ import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
+    AboutComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,10 @@ import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
     MatInputModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [
     {

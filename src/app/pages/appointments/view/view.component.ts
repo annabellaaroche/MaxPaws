@@ -32,7 +32,7 @@ export class ViewComponent {
   expandedElement: Appointment | null | undefined;
   
   constructor(apiService: ApiService){
-    apiService.Cita().subscribe(
+    apiService.cita().subscribe(
       (res)=>{
         this.dataSource = res;
       }

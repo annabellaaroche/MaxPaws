@@ -28,7 +28,7 @@ export class ViewComponent {
   expandedElement: Vaccine | null | undefined;
 
   constructor(apiService: ApiService){
-    apiService.Vacuna().subscribe(
+    apiService.vacuna().subscribe(
       (res)=>{
         this.dataSource = res
       }

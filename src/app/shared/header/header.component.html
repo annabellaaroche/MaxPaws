@@ -7,8 +7,8 @@
     </mat-icon>
   </button>--> 
 
-  <span routerLink="home" class="logo-link" *ngIf="userLoginOn"> <img src="https://media.canva.com/1/image-resize/1/500_500_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS9iNGp1VS9NQUZ0TE5iNGp1VS8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAI-CaCH9ucZxmYJNCZK-VqZfYSWGJ23r0dvdaA_9wJ16&exp=1693997967&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAP0hKd0ZNwPF0Ups93ME8pvXWNEiwC-Y-GiRs9R-lopk" alt=""   width="10%" > MaxPaws</span>
-  <span routerLink="/" class="logo-link" *ngIf="!userLoginOn"> <img src="https://media.canva.com/1/image-resize/1/500_500_100_PNG_F/czM6Ly9tZWRpYS1wcml2YXRlLmNhbnZhLmNvbS9iNGp1VS9NQUZ0TE5iNGp1VS8xL3AucG5n?osig=AAAAAAAAAAAAAAAAAAAAAI-CaCH9ucZxmYJNCZK-VqZfYSWGJ23r0dvdaA_9wJ16&exp=1693997967&x-canva-quality=thumbnail_large&csig=AAAAAAAAAAAAAAAAAAAAAP0hKd0ZNwPF0Ups93ME8pvXWNEiwC-Y-GiRs9R-lopk" alt=""   width="10%" > MaxPaws</span>
+  <span routerLink="home" class="logo-link" *ngIf="userLoginOn"> <img src="https://i.ibb.co/FVrqqMX/1-removebg-preview.png" alt=""   width="10%" > MaxPaws</span>
+  <span routerLink="/" class="logo-link" *ngIf="!userLoginOn"> <img src="https://i.ibb.co/FVrqqMX/1-removebg-preview.png" alt=""   width="10%" > MaxPaws</span>
   <span class="spacer"></span>
   <button class="toolbar-menu-option" routerLink="home" mat-button aria-label="Home" *ngIf="userLoginOn">
     Home
@@ -19,10 +19,10 @@
   <button class="toolbar-menu-option" routerLink="vaccines" mat-button aria-label="Consulta tus vacunas" *ngIf="userLoginOn">
     Vacunas
   </button>
-  <button class="toolbar-menu-option" routerLink="recommendations" mat-button
+  <!--<button class="toolbar-menu-option" routerLink="recommendations" mat-button
     aria-label="Consulta nuestras recomendaciones" *ngIf="userLoginOn">
     Recomendaciones
-  </button>
+  </button>-->
 
   <ng-container *ngIf="userLoginOn">
     <button mat-icon-button aria-label="Tu perfil" [matMenuTriggerFor]="account_menu">

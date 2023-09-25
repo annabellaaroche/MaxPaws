@@ -5,6 +5,9 @@ import { Observable, tap, catchError, throwError, map } from 'rxjs';
 import { User } from '../interfaces/user';
 import { LoginComponent } from '../auth/login/login.component';
 import { LoginService } from './auth/LoginService';
+import { Appointment } from '../interfaces/appointment';
+import { Vaccine } from '../interfaces/vaccine';
+import { Mascota } from '../interfaces/mascota';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +19,7 @@ export class ApiService {
   }
 
 
-  Owner(): Observable<any> {
+  owner(): Observable<any> {
     return this.http.get(`${config.apiUrl}/owner/`)
       .pipe(
         tap((response: any) => {
@@ -25,7 +28,7 @@ export class ApiService {
       )
   }
 
-  Cita(): Observable<any> {
+  cita(): Observable<any> {
     return this.http.get(`${config.apiUrl}/cita/`).pipe(
       map((response: any) => response.map(
         (x: any) => {
@@ -39,7 +42,7 @@ export class ApiService {
       catchError(this.handleError)
     )
   }
-  Vacuna(): Observable<any> {
+  vacuna(): Observable<any> {
     return this.http.get(`${config.apiUrl}/vacuna/`).pipe(
       map((response: any) => response.map(
         (x: any) => {
@@ -55,6 +58,68 @@ export class ApiService {
       catchError(this.handleError)
     )
   }
+  pet(user_id:any=''): Observable<any> {
+    return this.http.get(`${config.apiUrl}/pets/`+user_id ).pipe(
+      map((response: any) => response.map(
+        (x: any) => {
+          return {
+            id: x.id_pet,
+            name: x.name_pet,
+          }
+        }
+      )),
+      catchError(this.handleError)
+    )
+  }
+
+  raza(): Observable<any> {
+    return this.http.get(`${config.apiUrl}/raza/`).pipe(
+      map((response: any) => response.map(
+        (x: any) => {
+          return {
+            id: x.id_raza,
+            raza: x.name_raza,
+          }
+        }
+      )),
+      catchError(this.handleError)
+    )
+  }
+
+  petSize(): Observable<any> {
+    return this.http.get(`${config.apiUrl}/petSize/`).pipe(
+      map((response: any) => response.map(
+        (x: any) => {
+          return {
+            id: x.id_pet_size,
+            size: x.name_tamano,
+          }
+        }
+      )),
+      catchError(this.handleError)
+    )
+  }
+  crearCita(appointment: Appointment): Observable<Appointment> {
+    return this.http.post<Appointment>(`${config.apiUrl}/cita/`, appointment)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  crearVacuna(vacuna: Vaccine): Observable<Vaccine> {
+    return this.http.post<Vaccine>(`${config.apiUrl}/vacuna/`, vacuna)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+  
+  crearMascota(mascota: Mascota): Observable<Mascota> {
+    return this.http.post<Mascota>(`${config.apiUrl}/pets/`, mascota)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status == 0) {
       console.error('Se ha producido un error', error.error);

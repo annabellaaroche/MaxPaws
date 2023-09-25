@@ -64,12 +64,16 @@ tr.table-element-row:not(.table-expanded-row):active {
 }
 
 /*Formularios Validaciones*/
-input.ng-valid.ng-touched{
+input.ng-valid.ng-touched,
+textarea.ng-valid.ng-touched,
+mat-select.ng-valid.ng-touched{
     border-left: 2px solid rgb(3, 156, 3);
     padding-left: 2px;
 }
 
-input.ng-invalid.ng-touched{
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched,
+mat-select.ng-invalid.ng-touched{
     border-left: 2px solid rgba(180, 11, 11, 0.671);
     padding-left: 2px;
 }

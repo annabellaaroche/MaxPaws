@@ -40,11 +40,6 @@ export class LoginComponent {
         complete:()=>{
           console.info("Login completo");
           console.log(localStorage.getItem('access'));
-          this.apiService.Owner().subscribe({
-            next:(ownerData)=>{
-              console.log(ownerData);
-            }
-          });
           this.router.navigateByUrl('/home');
           this.loginForm.reset();
         }

@@ -1,0 +1,51 @@
+<div class="container text-begin">
+    <button mat-flat-button color="primary" routerLink="/appointments">
+        Regresar
+    </button>
+</div>
+
+<div class="container">
+    <form class="row g-0" [formGroup]="editForm" (ngSubmit)="submit()">
+        <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <mat-form-field class="w-100 p-1" (click)="picker.open()">
+                <mat-label for="fecha_cita">Fecha:</mat-label>
+                <input matInput [matDatepicker]="picker" id="fecha_cita" placeholder="Fecha"
+                    formControlName="fecha_cita">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="editForm.get('fecha_cita')?.hasError('required')">
+                    La fecha es rquerida
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <mat-form-field class="w-100 p-1">
+                <mat-label for="motivo_cita">Motivo:</mat-label>
+                <textarea matInput id="motivo_cita" placeholder="Motivo" formControlName="motivo_cita"></textarea>
+                <mat-error *ngIf="editForm.get('motivo_cita')?.hasError('required')">
+                    El Motivo de la cita es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <mat-form-field class="w-100 p-1">
+                <mat-label for="notas_cita">Notas:</mat-label>
+                <textarea matInput id="notas_cita" placeholder="Notas" formControlName="notas_cita"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <mat-form-field class="w-100 p-1">
+                <mat-label for="mascota">Mascota:</mat-label>
+                <mat-select matInput id="mascota" formControlName="mascota">
+                    <mat-option *ngFor="let item of pets" [value]="item.id">{{item.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="editForm.get('mascota')?.hasError('required')">
+                    Mascota es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <button type="submit" mat-flat-button color="primary">Guardar</button>
+        </div>
+    </form>
+</div>

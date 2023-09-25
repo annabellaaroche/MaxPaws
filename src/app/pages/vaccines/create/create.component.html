@@ -1,0 +1,57 @@
+<div class="container text-begin">
+    <button mat-flat-button color="primary" routerLink="/vaccines">
+        Regresar
+    </button>
+</div>
+
+<div class="container">
+    <form class="row g-0" [formGroup]="createVaccineForm" (ngSubmit)="submit()">
+        <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <mat-form-field class="w-100 p-1" (click)="picker.open()">
+                <mat-label for="date_vacuna">Fecha Vacuna</mat-label>
+                <input matInput [matDatepicker]="picker" id="date_vacuna" placeholder="Fecha Vacuna"
+                    formControlName="date_vacuna">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="createVaccineForm.get('date_vacuna')?.hasError('required')">
+                    La fecha es rquerida
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <mat-form-field class="w-100 p-1" (click)="picker2.open()"> 
+                <mat-label for="next_vacuna_date">Fecha Siguiente Cita</mat-label>
+                <input matInput [matDatepicker]="picker2" id="next_vacuna_date" placeholder="Fecha Siguiente Cita"
+                    formControlName="next_vacuna_date">
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-error *ngIf="createVaccineForm.get('next_vacuna_date')?.hasError('required')">
+                    La fecha es rquerida
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <mat-form-field class="w-100 p-1">
+                <mat-label for="name_vacuna">Vacuna</mat-label>
+                <input matInput id="name_vacuna" placeholder="Vacuna" formControlName="name_vacuna">
+                <mat-error *ngIf="createVaccineForm.get('name_vacuna')?.hasError('required')">
+                    Vacuna es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-6 d-flex justify-content-center">
+            <mat-form-field class="w-100 p-1">
+                <mat-label for="mascota">Mascota</mat-label>
+                <mat-select matInput id="mascota" formControlName="mascota">
+                    <mat-option *ngFor="let item of pets" [value]="item.id">{{item.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="createVaccineForm.get('mascota')?.hasError('required')">
+                    Mascota es requerido
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <button type="submit" mat-flat-button color="primary">Guardar</button>
+        </div>
+    </form>
+</div>

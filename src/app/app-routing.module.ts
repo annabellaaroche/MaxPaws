@@ -5,8 +5,13 @@ import { AppointmentsModule } from './pages/appointments/appointments.module'
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { sesionGuard } from './guards/sesion.guard';
+import { AboutComponent } from './pages/about/about.component';
 
 const routes: Routes = [
+  {
+    path:'',
+    component:AboutComponent
+  },
   {
     path:'home',
     component:HomeComponent,
@@ -23,6 +28,11 @@ const routes: Routes = [
   {
     path:'appointments',
     loadChildren:() => import('./pages/appointments/appointments.module').then(m => m.AppointmentsModule),
+    canActivate:[sesionGuard]
+  },
+  {
+    path:'pets',
+    loadChildren:() => import('./pages/pets/pets.module').then(m => m.PetsModule),
     canActivate:[sesionGuard]
   },
   {

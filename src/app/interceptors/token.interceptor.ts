@@ -39,7 +39,7 @@ export class TokenInterceptor implements HttpInterceptor {
                 error: (err: any) => {
                     this.loginService.logout().subscribe({
                         next: (x: any) => {
-                            this.router.navigateByUrl('/');
+                            this.router.navigateByUrl('/login');
                             return of(err.message);
                         }
                     });

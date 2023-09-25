@@ -1,7 +1,6 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { LoginService } from '../services/auth/LoginService';
-import { Injectable, Injector, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { inject } from '@angular/core';
 
 function fn(): Promise<boolean> {
   let loginService = inject(LoginService);

@@ -12,11 +12,7 @@ export class HomeComponent {
 
   
   OnClick(){
-    this.apiService.Owner().subscribe({
-      next:(ownerData)=>{
-        console.log(ownerData);
-      }
-    });
+    
   }
 
 }
