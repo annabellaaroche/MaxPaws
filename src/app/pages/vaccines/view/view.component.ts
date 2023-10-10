@@ -2,6 +2,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component } from '@angular/core';
 import { Vaccine } from 'src/app/interfaces/vaccine';
 import { ApiService } from 'src/app/services/api.service';
+import { LoginService } from 'src/app/services/auth/LoginService';
 
 @Component({
   selector: 'app-view-vaccines',
@@ -27,8 +28,8 @@ export class ViewComponent {
   };
   expandedElement: Vaccine | null | undefined;
 
-  constructor(apiService: ApiService){
-    apiService.vacuna().subscribe(
+  constructor(apiService: ApiService, loginService: LoginService){
+    apiService.getVacunaByOwnerId(loginService.getUserId()).subscribe(
       (res)=>{
         this.dataSource = res
       }

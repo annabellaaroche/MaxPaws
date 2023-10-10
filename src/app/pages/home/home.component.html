@@ -3,69 +3,32 @@
         Registrar Mascota
     </button>
 </div>
+<div class="container">
+    <h1>    <mat-icon class="example-icon">favorite</mat-icon>Mis mascotas</h1>
 
-    <div class="d-flex justify-content-center pt-4"> 
-    <mat-card class="example-card" >
-        <mat-card-header>
-        <img mat-card-avatar srcset="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Shiba Inu" >
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-xl-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" class="img-thumbnail ">
-        <mat-card-content>
-        <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-        </p>
-        </mat-card-content>
-        <mat-card-actions class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button mat-fab extended color="primary" class=" me-md-2">
-                <mat-icon>launch</mat-icon>
-                Ver
-              </button>
-        </mat-card-actions>
-    </mat-card>
-    <mat-card class="example-card">
-        <mat-card-header>
-            <img mat-card-avatar srcset="https://www.vidavetcare.com/wp-content/uploads/sites/234/2022/04/golden-retriever-dog-breed-info.jpeg" alt="Shiba Inu" class="img-fluid">      <mat-card-title>Golden Retriever</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-xl-image src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Golden_Retriever_9-year_old.jpg/1200px-Golden_Retriever_9-year_old.jpg" alt="Photo of a Golden Retriever" class="img-thumbnail img-fluid">
-        <mat-card-content>
-        <p>
-            The Golden Retriever is a friendly, intelligent, and devoted dog breed.
-            They are well-known for their golden coat and their friendly nature, making them
-            great family pets and companions.
-        </p>
-        </mat-card-content>
-        <mat-card-actions class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button mat-fab extended color="primary" class=" me-md-2">
-                <mat-icon>launch</mat-icon>
-                Ver
-              </button>
-        </mat-card-actions>
-    </mat-card>
-
-    <mat-card class="example-card">
-        <mat-card-header>
-            <img mat-card-avatar srcset="https://estaticos-cdn.prensaiberica.es/clip/e556f634-705d-46fa-ae9b-36b6ab9583c9_16-9-discover-aspect-ratio_default_0.jpg" alt="Shiba Inu" >    
-        <mat-card-title>Bulldog</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-xl-image src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Racib%C3%B3rz_2007_082.jpg" alt="Photo of a Bulldog" class="img-thumbnail">
-        <mat-card-content>
-        <p>
-            Bulldogs are known for their loose, wrinkled skin and distinctive pushed-in nose.
-            They are gentle and friendly dogs, making them great companions for families.
-        </p>
-        </mat-card-content> 
-        <mat-card-actions class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button mat-fab extended color="primary" class=" me-md-2">
-                <mat-icon>launch</mat-icon>
-                Ver
-              </button>
-        </mat-card-actions>
-    </mat-card>
-
+    <div class="row justify-content-center pt-4 ">
+        <mat-card class="col-auto example-card" *ngFor="let mascota of pets">
+            <mat-card-header>
+                <!--<img mat-card-avatar srcset="https://material.angular.io/assets/img/examples/shiba1.jpg"
+                    alt="Shiba Inu">-->
+                <mat-card-title>{{mascota.name_pet}} <mat-icon class="example-icon">pets</mat-icon>
+                </mat-card-title>
+                <mat-card-subtitle>{{mascota.birth_date_pet}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-xl-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                alt="Photo of a Shiba Inu" class="img-thumbnail ">
+            <mat-card-content>
+                <p>
+                    <li>Color: {{mascota.pet_color}}</li>
+                    <li>Genero: {{mascota.pet_gender}} </li>
+                </p>
+            </mat-card-content>
+            <mat-card-actions class="d-grid gap-2 d-md-flex justify-content-md-end h-100">
+                <button mat-fab extended color="primary" class="me-md-2 align-self-end">
+                    <mat-icon>launch</mat-icon>
+                    Ver
+                </button>
+            </mat-card-actions>
+        </mat-card>
     </div>
+</div>

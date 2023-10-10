@@ -28,9 +28,7 @@ export class CreateComponent {
         Validators.required,
       ]],
     });
-    
- //   this.apiService.pet(this.loginService.getUserId()).subscribe(
-    this.apiService.pet().subscribe(
+        this.apiService.pet(this.loginService.getUserId()).subscribe(
       (res)=>{
         this.pets=res;
       },

@@ -41,7 +41,7 @@
             <mat-form-field class="w-100 p-1">
                 <mat-label for="pet_gender">Genero:</mat-label>
                 <mat-select matInput id="pet_gender" formControlName="pet_gender">
-                    <mat-option *ngFor="let item of gender" [value]="item.id">{{item.name}}</mat-option>
+                    <mat-option *ngFor="let item of gender" [value]="item.name">{{item.name}}</mat-option>
                 </mat-select>
                 <mat-error *ngIf="createPetForm.get('pet_gender')?.hasError('required')">
                     Genero es requerido

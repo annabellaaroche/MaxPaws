@@ -28,19 +28,15 @@
     <button mat-icon-button aria-label="Tu perfil" [matMenuTriggerFor]="account_menu">
       <mat-icon>account_circle</mat-icon>
     </button>
-
-    <button mat-icon-button aria-label="Example icon-button with a menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
     <mat-menu #account_menu="matMenu" >
-      <button mat-menu-item routerLink="account">
+      <button mat-menu-item routerLink="account/edit/5">
         <mat-icon>account_circle</mat-icon>
         <span>Ver cuenta</span>
       </button>
-      <button mat-menu-item routerLink="account/edit/5">
+     <!-- <button mat-menu-item routerLink="account/edit/5">
         <mat-icon>edit</mat-icon>
         <span>Editar cuenta</span>
-      </button>
+      </button>-->
       <button mat-menu-item (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
         <span>Cerrar sesión</span>
@@ -50,10 +46,6 @@
 <ng-container *ngIf="!userLoginOn">
   <button mat-icon-button aria-label="Tu perfil" [matMenuTriggerFor]="account_menu">
     <mat-icon>account_circle</mat-icon>
-  </button>
-
-  <button mat-icon-button aria-label="Example icon-button with a menu">
-    <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #account_menu="matMenu" >
     <button mat-menu-item routerLink="login">

@@ -78,12 +78,11 @@ export class CreateComponent {
   }
 
   submit(){
-    console.log(this.createPetForm.value)
     if(!this.createPetForm.valid) return;
     let value = {...this.createPetForm.value}
     value.birth_date_pet = `${value.birth_date_pet.getFullYear()}-${value.birth_date_pet.getMonth()+1}-${value.birth_date_pet.getDate()}`
     //value.owner = this.loginService.getUserId() CAMBIAR
-    value.owner = 1;
+    value.owner = this.loginService.getUserId();
     this.apiService.crearMascota(value).subscribe(
       (next)=>{
         console.log('Exito');

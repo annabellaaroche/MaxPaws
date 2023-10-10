@@ -10,7 +10,7 @@ import { LoginService } from 'src/app/services/auth/LoginService';
 })
 export class CreateComponent {
   editForm: FormGroup;
-  pets:any[]=[];
+  pets: any[] = [];
   constructor(
     public formBuilder: FormBuilder, private loginService: LoginService, private apiService: ApiService
   ) {
@@ -27,13 +27,12 @@ export class CreateComponent {
         Validators.required,
       ]],
     });
-    
- //   this.apiService.pet(this.loginService.getUserId()).subscribe(
-    this.apiService.pet().subscribe(
-      (res)=>{
-        this.pets=res;
+
+    this.apiService.pet(this.loginService.getUserId()).subscribe(
+      (res) => {
+        this.pets = res;
       },
-      (err)=>{
+      (err) => {
         //MANEJAR ERROR
         console.log(err);
 
@@ -41,16 +40,16 @@ export class CreateComponent {
     )
   }
 
-  submit(){
-    if(!this.editForm.valid) return;
-    let value = {...this.editForm.value}
-    value.fecha_cita = `${value.fecha_cita.getFullYear()}-${value.fecha_cita.getMonth()+1}-${value.fecha_cita.getDate()}`
+  submit() {
+    if (!this.editForm.valid) return;
+    let value = { ...this.editForm.value }
+    value.fecha_cita = `${value.fecha_cita.getFullYear()}-${value.fecha_cita.getMonth() + 1}-${value.fecha_cita.getDate()}`
     this.apiService.crearCita(value).subscribe(
-      (next)=>{
+      (next) => {
         console.log('Exito');
 
       },
-      (error)=>{
+      (error) => {
         console.log('Error');
       }
     );

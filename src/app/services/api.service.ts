@@ -58,11 +58,43 @@ export class ApiService {
       catchError(this.handleError)
     )
   }
-  pet(user_id:any=''): Observable<any> {
-    return this.http.get(`${config.apiUrl}/pets/`+user_id ).pipe(
+  getVacunaByOwnerId(user_id:any=''):Observable<any>{
+    return this.http.get(`${config.apiUrl}/vacuna/by_owner_id/?owner_id=`+user_id).pipe(
       map((response: any) => response.map(
         (x: any) => {
           return {
+            ...x,
+            name:x.name_vacuna,
+            date:x.date_vacuna,
+            next_date:x.next_vacuna_date,
+            pet_name: x.mascota.name_pet
+          }
+        }
+      )),
+      catchError(this.handleError)
+    )
+  }
+
+  getCitaByOwnerId(user_id:any=''):Observable<any>{
+    return this.http.get(`${config.apiUrl}/cita/by_owner_id/?owner_id=`+user_id).pipe(
+      map((response: any) => response.map(
+        (x: any) => {
+          return {
+            ...x,
+            notes: x.notas_cita,
+            mascota: x.mascota.name_pet
+          }
+        }
+      )),
+      catchError(this.handleError)
+    )
+  }
+  pet(user_id:any=''): Observable<any> {
+    return this.http.get(`${config.apiUrl}/pets/by_owner_id/?owner_id=`+user_id).pipe(
+      map((response: any) => response.map(
+        (x: any) => {
+          return {
+            ...x,
             id: x.id_pet,
             name: x.name_pet,
           }

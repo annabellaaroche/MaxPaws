@@ -2,7 +2,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component } from '@angular/core';
 import { Appointment } from '../../../interfaces/appointment';
 import { ApiService } from 'src/app/services/api.service';
-
+import { LoginService } from 'src/app/services/auth/LoginService';
 
 @Component({
   selector: 'app-view-appointments',
@@ -16,13 +16,9 @@ import { ApiService } from 'src/app/services/api.service';
     ]),
   ],
 })
-
 export class ViewComponent {
-
-  
   dataSource: Appointment[] = [];
-  columnsToDisplay = [
-    'fecha_cita', 'motivo_cita', 'mascota'];
+  columnsToDisplay = ['fecha_cita', 'motivo_cita', 'mascota'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   columnDisplayNames: { [key: string]: string } = {
     fecha_cita: 'Fecha',
@@ -31,8 +27,8 @@ export class ViewComponent {
   };
   expandedElement: Appointment | null | undefined;
   
-  constructor(apiService: ApiService){
-    apiService.cita().subscribe(
+  constructor(apiService: ApiService, loginService: LoginService){
+    apiService.getCitaByOwnerId(loginService.getUserId()).subscribe(
       (res)=>{
         this.dataSource = res;
       }
