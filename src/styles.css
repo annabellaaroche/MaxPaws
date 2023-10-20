@@ -2,65 +2,145 @@
 
 html,
 body {
-    height: 100%;
+    --text-color: #222;
+    --background-color: #fff;
 }
 
+body.dark-theme {
+    --text-color: #fff;
+    --background-color: #222;
+  }
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
 }
 
+::ng-deep .mat-focused .mat-form-field-label {
+ /*change color of label*/
+ color: var(--text-color);
+}
+
+::ng-deep.mat-form-field-underline {
+ /*change color of underline*/
+ background: var(--background-color);
+} 
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background: var(--background-color);
+}
+
+::ng-deep .mat-form-field-label {
+ /*change color of label*/
+ color: var(--text-color);
+}
+::ng-deep .mat-calendar-body-selected{
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+::ng-deep .mat-datepicker-content{
+    color: var(--text-color);
+
+}
+
+
+mat-datepicker-toggle {
+    color: var(--text-color);
+}
+
+textarea{
+    background: var(--background-color);
+    color: var(--text-color);
+}
 .container {
     padding: 15px;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+th{
+    background: var(--background-color);
+    color: var(--text-color);
 }
 
 table {
     width: 100%;
+    background: var(--background-color);
+    color: var(--text-color);
 }
 
 tr.table-detail-row{
     height: 0;
+    background: var(--background-color);
+    color: var(--text-color);
 }
 
 tr.table-element-row:not(.table-expanded-row):hover {
-    background: whitesmoke;
+    background: var(--background-color);
+    color: var(--text-color);
+
 }
 
 tr.table-element-row:not(.table-expanded-row):active {
-    background: #efefef;
+    background: var(--background-color);
+    color: var(--text-color);
+
 }
 
-.table-element-row td {
+.table-element-row td,th {
     border-bottom-width: 0;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+.mat-mdc-table{
+    background: var(--background-color);
+    color: var(--text-color);
 }
 
 .table-element-detail {
     overflow: hidden;
     display: flex;
+    background: var(--background-color);
+    color: var(--text-color);
+
 }
 
 .table-element-diagram {
     min-width: 80px;
-    border: 2px solid black;
+    border: 2px solid var(--text-color);
     padding: 8px;
     font-weight: lighter;
     margin: 8px 0;
     height: 104px;
     display: none;
+    background: var(--background-color);
+    color: var(--text-color);
+
 }
 
 .table-element-symbol {
     font-weight: bold;
     font-size: 40px;
     line-height: normal;
+    background: var(--background-color);
+    color: var(--text-color);    
+
 }
 
 .table-element-description {
     padding: 16px;
+    background: var(--background-color);
+    color: var(--text-color);    
+
 }
 
 .table-element-description-attribution {
     opacity: 0.5;
+    background: var(--background-color);
+    color: var(--text-color);
 }
 
 /*Formularios Validaciones*/
@@ -80,11 +160,149 @@ mat-select.ng-invalid.ng-touched{
 
 mat-label {
     padding-left: 3px;
+    color: var(--text-color);
+    background: var(--background-color);
 }
 
   
-  
-
-.container{
+.container {
     overflow-x: auto;
+    background: var(--background-color);
+    color: var(--text-color);
 }
+
+table.responsive {
+    display: none;
+    color: var(--text-color);
+    background: var(--background-color);
+
+}
+
+table.mobile {
+    width: 95%;
+    margin: 0.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+}
+
+table.mobile>tr.hidden,
+table.mobile>tr.hidden>td {
+    height: 0px;
+    line-height: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-top: 0px solid var(--text-color);
+    border-bottom: 0px;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+table.mobile>tr.header {
+    cursor: pointer;
+    font-weight:500;
+    border-top: 1px solid var(--text-color);
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+table.mobile>tr.header:first-child {
+    border-top: none;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+table.mobile>tr.header>td {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    height: 3em;
+    line-height: 3em;
+}
+
+table.mobile>tr.header>td:first-child:before {
+    content: "\25BC";
+    display: inline-block;
+    transform: rotate(0deg);
+    transition: 0.5s ease all;
+}
+
+table.mobile>tr.header.collapsed>td:first-child:before {
+    content: "\25BC";
+    display: inline-block;
+    transform: rotate(-90deg);
+    transition: 0.5s ease all;
+}
+
+table.mobile>tr {
+    height: calc(1.6em);
+    line-height: calc(1.6em);
+    overflow: hidden;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-top: 0px solid rgba(169,169,169,0);
+    border-bottom: 0px;
+    transition: 0.5s ease all;
+}
+table.mobile>tr.hidden:not(.header)+tr.hidden:not(.header),
+table.mobile>tr.hidden:not(.header)+tr.hidden:not(.header)>td{
+    border-top:0px solid rgba(169,169,169,0);
+}
+table.mobile>tr:not(.hidden):not(.header)+tr:not(.hidden):not(.header),
+table.mobile>tr:not(.hidden):not(.header)+tr:not(.hidden):not(.header)>td{
+    border-top:0px solid rgba(169,169,169,0);
+}
+
+table.mobile>tr.header+tr:not(.hidden) {
+    border-top: 1px solid rgba(169,169,169,1);
+}
+
+table.mobile>tr.header+tr:not(.hidden)>td {
+    padding-top: calc(1em);
+}
+
+table.mobile tr:has(+ tr.header):not(.hidden)>td,
+table.mobile tr:last-child:not(.hidden)>td{
+    padding-bottom: calc(1.5em);
+}
+
+table.mobile>tr>td {
+    height: calc(1.6em);
+    line-height: calc(1.6em);
+    overflow: hidden;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-top: 0px;
+    border-bottom: 0px;
+    transition: 0.5s ease all;
+}
+
+table.mobile>tr.header,
+table.mobile>tr>td>span {
+    font-weight:500;
+    text-transform: capitalize;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+table.mobile>tr:not(.header)>td {
+    padding-left: 1.6em;
+    padding-right: 1em;
+}
+
+@media screen and (min-width: 500px) {
+    table.responsive {
+        display:table;
+        color: var(--text-color);
+    }
+
+    table.mobile {
+        visibility: collapse;
+    }
+} 
+
+

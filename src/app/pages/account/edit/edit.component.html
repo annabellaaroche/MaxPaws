@@ -3,24 +3,23 @@
 <div class="container">
     <form class="row g-0" [formGroup]="editForm" (ngSubmit)="submit()">
         <mat-form-field class="col-12 col-sm-6 d-flex justify-content-center">
-            <mat-label for="name">Nombre:</mat-label>
-            <input matInput id="name" type="text" placeholder="Name" formControlName="name">
+            <mat-label for="first_name">Nombres:</mat-label>
+            <input matInput id="first_name" type="text" placeholder="first_name" formControlName="first_name">
         </mat-form-field>
         <mat-form-field class="col-12 col-sm-6 d-flex justify-content-center">
-            <mat-label for="Telefono">Telefono:</mat-label>
-            <input matInput id="Telefono" type="text" placeholder="Telefono" formControlName="phone">
+            <mat-label for="last_name">Apellidos:</mat-label>
+            <input matInput id="last_name" type="text" placeholder="last_name" formControlName="last_name">
         </mat-form-field>
         <mat-form-field class="col-12 col-sm-6 d-flex justify-content-center">
             <mat-label for="email">Email:</mat-label>
-            <input matInput id="email" type="text" placeholder="Email" formControlName="email">
+            <input matInput id="email" type="text" placeholder="email" formControlName="email">
         </mat-form-field>
         <mat-form-field class="col-12 col-sm-6 d-flex justify-content-center">
-            <mat-label for="addres">Direcicón:</mat-label>
-            <input matInput id="addres" type="text" placeholder="addres" formControlName="addres">
+            <mat-label for="user_name">Nombre de Usuario:</mat-label>
+            <input matInput id="user_name" type="text" placeholder="user_name" formControlName="user_name">
         </mat-form-field>
-
         <div class="col-12 d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary">Editar</button>
         </div>
     </form>
 </div>

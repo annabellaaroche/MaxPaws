@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-edit',
@@ -9,24 +10,36 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class EditComponent {
 
   editForm: FormGroup;
-
+  userData: any;
   constructor(
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    private apiService: ApiService
   ) {
     this.editForm = this.formBuilder.group({
-      name: ['', [
-        Validators.required,
-      ]],
-      phone: ['', [
-        Validators.required,
-      ]],
       email: ['', [
         Validators.required,
       ]],
-      addres: ['', [
+      user_name: ['', [
+        Validators.required,
+      ]],
+      first_name: ['', [
+        Validators.required,
+      ]],
+      last_name: ['', [
         Validators.required,
       ]],
     });
+    apiService.getLoggedUser().subscribe(
+      (res)=>{
+        this.userData = res;
+        this.editForm.patchValue({
+          email: this.userData.email,
+          user_name: this.userData.user_name,
+          first_name: this.userData.first_name,
+          last_name: this.userData.last_name,
+        }); 
+      }
+    );
   }
 
   submit(){

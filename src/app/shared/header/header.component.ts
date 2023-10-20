@@ -12,11 +12,12 @@ export class HeaderComponent {
   sidenavToggle = true;
   dev = false;
   userLoginOn = false;
-  
+  userID=0;
 
   constructor(private loginService: LoginService){
     setInterval(()=>{
       this.userLoginOn = localStorage.getItem('userLoginOn') == 'true' ? true:false;
+      this.userID=this.loginService.getUserId();
     },100
     )
   }
@@ -27,6 +28,9 @@ public logout(){
       console.log("Se Cerro la Sesion")
     }
   );
+}
+toggleDarkTheme(): void {
+  document.body.classList.toggle('dark-theme');
 }
   toggleSidenav(){
     this.sidenavToggle = !this.sidenavToggle;

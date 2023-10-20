@@ -17,7 +17,7 @@
               </mat-error>
           </mat-form-field>
         <mat-form-field>
-          <mat-label><mat-icon>perm_identity</mat-icon> Ingrese su primer nomnbre</mat-label>
+          <mat-label><mat-icon>perm_identity</mat-icon> Ingrese su primer nombre</mat-label>
           <input matInput placeholder="First Name" formControlName="first_name" name="first_name" required>
           <mat-error *ngIf="registerForm.get('first_name')?.hasError('required')">
               El primer nombre es requerido. 

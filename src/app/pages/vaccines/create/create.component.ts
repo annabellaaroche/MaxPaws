@@ -11,6 +11,7 @@ import { LoginService } from 'src/app/services/auth/LoginService';
 export class CreateComponent {
   createVaccineForm: FormGroup;
   pets:any[]=[];
+  message:string="";
   constructor(
     public formBuilder: FormBuilder, private loginService: LoginService, private apiService: ApiService
   ) {
@@ -35,7 +36,6 @@ export class CreateComponent {
       (err)=>{
         //MANEJAR ERROR
         console.log(err);
-
       }
     )
   }
@@ -49,10 +49,12 @@ export class CreateComponent {
     this.apiService.crearVacuna(value).subscribe(
       (next)=>{
         console.log('Exito');
-
+        this.message="true";
+        this.createVaccineForm.reset();
       },
       (error)=>{
         console.log('Error');
+        this.message =error;
       }
     );
   }

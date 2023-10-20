@@ -30,7 +30,6 @@ export class RegisterComponent {
             console.log(userData);
           },
           error:(errorData)=>{
-            console.error(errorData);
             this.registerError = errorData;
             this.loginValid=false;
             /*this.loginValid = false;*/

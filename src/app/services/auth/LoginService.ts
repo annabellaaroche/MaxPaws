@@ -1,11 +1,12 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, tap, throwError } from 'rxjs';
+import { Observable, catchError, map, tap, throwError } from 'rxjs';
 import { User } from 'src/app/interfaces/user';
 import { config } from './../../config';
 import * as moment from "moment";
 import { Route, Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
+import { environment } from 'src/environment/environment';
 
 
 
@@ -25,18 +26,17 @@ export class LoginService {
           this.setSession(response);
         }),
         catchError(this.handleError)
-      )
+      );
   }
 
   register(user: any): Observable<any> {
-    return this.http.post<any>(`${config.apiUrl}/user/register/`, user).pipe(
+    return this.http.post(`${config.apiUrl}/user/register/`, user).pipe(
       catchError(this.handleError)
-
     );
   }
 
   logout(): Observable<any> {
-    return this.http.post<any>(`${config.apiUrl}/user/logout/backlist/`, { refresh_token: this.getRefreshToken() }).pipe(
+    return this.http.post<any>(`${ config.apiUrl}/user/logout/backlist/`, { refresh_token: this.getRefreshToken() }).pipe(
       tap(() => {
         // Eliminar elementos del localStorage solo si la solicitud es exitosa
         localStorage.removeItem("access");
@@ -62,15 +62,29 @@ export class LoginService {
     localStorage.setItem('expires_at', authResult.expires);
     localStorage.setItem('userLoginOn', 'true');
   }
-  private handleError(error: HttpErrorResponse) {
+  
+ private handleError(error: HttpErrorResponse, response:any) {
     if (error.status == 0) {
       console.error('Se ha producido un error', error.error);
     } else {
       console.error('Backend retorno el codigo de estado: ', error.status, error.error);
     }
-    return throwError(() => new Error("Oops! Ha ocurrido un error: " + error.statusText));
-  }
+    return throwError(() => JSON.stringify(error.error));
 
+  }
+  /*
+  private handleError(error: HttpErrorResponse) {
+    let errorList:ICError[]=[];
+    if(Object.hasOwn(error.error,"email")){
+      errorList.push(
+        environment.Errors.Registration.DuplicatedEmail
+      )
+      console.log(errorList)
+    }
+    //return {errorList,error:true} as any;
+    return throwError(()=>JSON.stringify(errorList))
+  }
+*/
   getToken() {
     return localStorage.getItem('access');
   }
@@ -111,4 +125,13 @@ export class LoginService {
     }  
   
   */
+}
+interface ICErrorResponce{
+  errorList:ICError[],
+  error?:boolean
+}
+interface ICError{
+  code:number,
+  message:string,
+  displayMessage:string
 }

@@ -1,7 +1,9 @@
+
+
 .sidenav-container {
     height: calc(100% - max(10%,3rem));
     width: 100%;
-    position:absolute
+    position:absolute;
 }
 .spacer{
     flex: 1 1 auto;
@@ -10,6 +12,8 @@
     min-width: 5vw;
     max-width: 20vw;
     width: auto;
+    background: var(--background-color);
+    color: var(--text-color);
 }
 .toolbar {
     height: 10%;

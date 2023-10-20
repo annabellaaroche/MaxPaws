@@ -5,6 +5,12 @@
 </div>
 
 <div class="container">
+    <mat-error *ngIf="!message">
+        {{message}}
+      </mat-error>
+      <mat-hint *ngIf="message==='true'" style="color: green;">
+        Vacuna Ingresada!
+      </mat-hint>
     <form class="row g-0" [formGroup]="createVaccineForm" (ngSubmit)="submit()">
         <div class="col-12 col-sm-6 d-flex justify-content-center">
             <mat-form-field class="w-100 p-1" (click)="picker.open()">
@@ -20,7 +26,7 @@
         </div>
         <div class="col-12 col-sm-6 d-flex justify-content-center">
             <mat-form-field class="w-100 p-1" (click)="picker2.open()"> 
-                <mat-label for="next_vacuna_date">Fecha Siguiente Cita</mat-label>
+                <mat-label for="next_vacuna_date">Fecha Siguiente vacuna</mat-label>
                 <input matInput [matDatepicker]="picker2" id="next_vacuna_date" placeholder="Fecha Siguiente Cita"
                     formControlName="next_vacuna_date">
                 <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>

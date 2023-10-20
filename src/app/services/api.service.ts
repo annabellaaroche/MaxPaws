@@ -104,6 +104,15 @@ export class ApiService {
     )
   }
 
+  getLoggedUser():Observable<any>{
+    return this.http.get(`${config.apiUrl}/user/logedUser/`)
+  .pipe(
+    tap((response: any) => {
+    }),
+    catchError(this.handleError)
+  )
+}
+
   raza(): Observable<any> {
     return this.http.get(`${config.apiUrl}/raza/`).pipe(
       map((response: any) => response.map(
@@ -158,6 +167,6 @@ export class ApiService {
     } else {
       console.error('Backend retorno el codigo de estado: ', error.status, error.error);
     }
-    return throwError(() => new Error("Oops! Ha ocurrido un error: " + error));
+    return throwError(() => new Error("Oops! Ha ocurrido un error: " + error.error));
   }
 }

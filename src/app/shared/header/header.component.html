@@ -23,13 +23,14 @@
     aria-label="Consulta nuestras recomendaciones" *ngIf="userLoginOn">
     Recomendaciones
   </button>-->
+  <button (click)="toggleDarkTheme()">dark</button>
 
   <ng-container *ngIf="userLoginOn">
     <button mat-icon-button aria-label="Tu perfil" [matMenuTriggerFor]="account_menu">
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #account_menu="matMenu" >
-      <button mat-menu-item routerLink="account/edit/5">
+      <button mat-menu-item routerLink="account/edit/{{userID}}">
         <mat-icon>account_circle</mat-icon>
         <span>Ver cuenta</span>
       </button>

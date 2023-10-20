@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Vaccine } from 'src/app/interfaces/vaccine';
 import { ApiService } from 'src/app/services/api.service';
 import { LoginService } from 'src/app/services/auth/LoginService';
@@ -16,12 +16,12 @@ import { LoginService } from 'src/app/services/auth/LoginService';
     ]),
   ],
 })
-export class ViewComponent {
+export class ViewComponent implements OnInit{
   dataSource: Vaccine[] = [];
   columnsToDisplay = ['name', 'date', 'next_date' , 'pet_name'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   columnDisplayNames: { [key: string]: string } = {
-    name: 'Nombre',
+    name: 'Nombre vacuna',
     date: 'Fecha',
     next_date: 'Siguiente Cita',
     pet_name: 'Nombre de la Mascota'
@@ -34,6 +34,28 @@ export class ViewComponent {
         this.dataSource = res
       }
     );
+
+  }
+
+  getProp(propKey:string,object:any){
+    return (object as any)[propKey]
+  }
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      const header = document.querySelectorAll('.header');
+      header.forEach(header => {
+        header.addEventListener('click', () => {
+          header.classList.toggle('collapsed')
+          var nextRow = header.nextElementSibling;
+          while (nextRow && !nextRow.classList.contains('header')) {
+            nextRow.classList.toggle('hidden')
+            nextRow = nextRow.nextElementSibling;
+          }
+        });
+      });
+    }, 100)
   }
 }
+
 

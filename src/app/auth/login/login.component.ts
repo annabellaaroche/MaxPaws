@@ -30,7 +30,10 @@ export class LoginComponent {
     if(this.loginForm.valid){
       this.loginService.login(this.loginForm.value as User).subscribe({
         next:(userData)=>{
-          console.log(userData);
+          console.info("Login completo");
+          console.log(localStorage.getItem('access'));
+          this.router.navigateByUrl('/home');
+          this.loginForm.reset();
         },
         error:(errorData)=>{
           console.error(errorData);
@@ -38,10 +41,7 @@ export class LoginComponent {
           this.loginValid = false;
         },
         complete:()=>{
-          console.info("Login completo");
-          console.log(localStorage.getItem('access'));
-          this.router.navigateByUrl('/home');
-          this.loginForm.reset();
+          
         }
       });
     }else{

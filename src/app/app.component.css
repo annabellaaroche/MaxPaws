@@ -1,22 +1,32 @@
 .sidenav-container {
     height: calc(100% - max(10%,3rem));
     width: 100%;
-    position:absolute
+    position:absolute;
+    background: var(--background-color);
+    color: var(--text-color);
 }
 .spacer{
     flex: 1 1 auto;
+    background: var(--background-color);
+    color: var(--text-color);
 }
 .sidenav-content {
     min-width: 5vw;
     max-width: 20vw;
     width: auto;
+    background: var(--background-color);
+    color: var(--text-color);
 }
 .toolbar {
     height: 10%;
     min-height: 3rem;
+    background: var(--background-color);
+    color: var(--text-color);
 }
 .toolbar-menu-option:hover {
     text-decoration:underline;
+    background: var(--background-color);
+    color: var(--text-color);
 }
 
 .mat-icon.large-icon {
@@ -24,6 +34,8 @@
     width: 40px;
     font-size: 40px;
     line-height: 40px;
+    background: var(--background-color);
+    color: var(--text-color);
 }
 
 div.dev{
@@ -37,6 +49,8 @@ div.dev{
 }
 .logo-link{
     cursor: pointer;
+    background: var(--background-color);
+    color: var(--text-color);
 }
 .spinner-container{
     display: flex;

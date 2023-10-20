@@ -3,6 +3,7 @@ import { Injectable, Injector } from "@angular/core";
 import { Router } from "@angular/router";
 import { catchError, Observable, of, throwError } from "rxjs";
 import { LoginService } from "../services/auth/LoginService";
+import { config } from "../config";
 
 
 
@@ -26,7 +27,7 @@ export class TokenInterceptor implements HttpInterceptor {
     }
 
     private handleAuthError(err: HttpErrorResponse, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
-        if (err && err.status === 401 && this.ctr != 1) {
+        if (err && err.status === 401 && this.ctr != 1 && req.url!=`${config.apiUrl}/token/`){
             this.ctr++;
             this.loginService.refreshToken().subscribe({
                 next: (x: any) => {
@@ -49,7 +50,7 @@ export class TokenInterceptor implements HttpInterceptor {
         }
         else {
             this.ctr = 0;
-            return throwError(() => new Error("Non Authenticationn Error"));
+            return throwError(() => err);
         }
 
     }
