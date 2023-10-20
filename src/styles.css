@@ -6,9 +6,9 @@ body {
     --background-color: #fff;
 }
 
-body.dark-theme {
+.dark-theme * {
     --text-color: #fff;
-    --background-color: #222;
+    background-color: #222 !important;
   }
 body {
     margin: 0;
@@ -17,44 +17,6 @@ body {
     color: var(--text-color);
 }
 
-::ng-deep .mat-focused .mat-form-field-label {
- /*change color of label*/
- color: var(--text-color);
-}
-
-::ng-deep.mat-form-field-underline {
- /*change color of underline*/
- background: var(--background-color);
-} 
-
-::ng-deep.mat-form-field-ripple {
- /*change color of underline when focused*/
- background: var(--background-color);
-}
-
-::ng-deep .mat-form-field-label {
- /*change color of label*/
- color: var(--text-color);
-}
-::ng-deep .mat-calendar-body-selected{
-    background: var(--background-color);
-    color: var(--text-color);
-}
-
-::ng-deep .mat-datepicker-content{
-    color: var(--text-color);
-
-}
-
-
-mat-datepicker-toggle {
-    color: var(--text-color);
-}
-
-textarea{
-    background: var(--background-color);
-    color: var(--text-color);
-}
 .container {
     padding: 15px;
     background: var(--background-color);
