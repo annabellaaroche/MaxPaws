@@ -1,8 +1,10 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Appointment } from '../../../interfaces/appointment';
 import { ApiService } from 'src/app/services/api.service';
 import { LoginService } from 'src/app/services/auth/LoginService';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-view-appointments',
@@ -17,7 +19,7 @@ import { LoginService } from 'src/app/services/auth/LoginService';
   ],
 })
 export class ViewComponent {
-  dataSource: Appointment[] = [];
+  dataSource!: MatTableDataSource<Appointment>;
   columnsToDisplay = ['fecha_cita', 'motivo_cita', 'mascota'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   columnDisplayNames: { [key: string]: string } = {
@@ -26,11 +28,13 @@ export class ViewComponent {
     mascota: 'Nombre de la Mascota'
   };
   expandedElement: Appointment | null | undefined;
-  
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+
   constructor(apiService: ApiService, loginService: LoginService){
     apiService.getCitaByOwnerId(loginService.getUserId()).subscribe(
       (res)=>{
-        this.dataSource = res;
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
       }
     );
   }

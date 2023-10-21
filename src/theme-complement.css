@@ -222,7 +222,7 @@ textarea.cdk-textarea-autosize-measuring-firefox {
 
 html {
     --mat-option-selected-state-label-text-color: #3f51b5;
-    --mat-option-label-text-color: rgba(0, 0, 0, 0.87);
+    --mat-option-label-text-color: var(--bs-body-color);
     --mat-option-hover-state-layer-color: rgba(0, 0, 0, 0.04);
     --mat-option-focus-state-layer-color: rgba(0, 0, 0, 0.04);
     --mat-option-selected-state-layer-color: rgba(0, 0, 0, 0.04)
@@ -760,9 +760,9 @@ html {
 }
 
 html {
-    --mat-select-panel-background-color: white;
+    --mat-select-panel-background-color: var(--bs-body-bg);
     --mat-select-enabled-trigger-text-color: var(--bs-body-color);
-    --mat-select-disabled-trigger-text-color: rgba(0, 0, 0, 0.38);
+    --mat-select-disabled-trigger-text-color: var(--bs-body-color);
     --mat-select-placeholder-text-color: rgba(0, 0, 0, 0.6);
     --mat-select-enabled-arrow-color: var(--bs-secondary-color);
     --mat-select-disabled-arrow-color: rgba(0, 0, 0, 0.38);
@@ -1316,10 +1316,10 @@ html {
 }
 
 html {
-    --mat-paginator-container-text-color: rgba(0, 0, 0, 0.87);
-    --mat-paginator-container-background-color: white;
-    --mat-paginator-enabled-icon-color: rgba(0, 0, 0, 0.54);
-    --mat-paginator-disabled-icon-color: rgba(0, 0, 0, 0.12)
+    --mat-paginator-container-text-color: var( --bs-body-color);
+    --mat-paginator-container-background-color: var(---bs-tertiary-bg);
+    --mat-paginator-enabled-icon-color:  var( --bs-body-color);
+    --mat-paginator-disabled-icon-color: var(--bs-tertiary-color);
 }
 
 html {

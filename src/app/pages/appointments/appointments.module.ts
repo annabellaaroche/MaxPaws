@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -46,6 +47,8 @@ const routes: Routes = [
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatPaginatorModule,
+
   ]
 })
 export class AppointmentsModule { }

@@ -56,7 +56,7 @@
     </table>
 
     <table class="mat-elevation-z8 mobile">
-        <ng-container *ngFor="let data of dataSource;index as columnIndex">
+        <ng-container  *ngFor="let data of dataSource.data;index as columnIndex" >
             <tr class="header collapsed">
                 <td>
                     {{data.name || "Column " + (columnIndex + 1)}}
@@ -68,5 +68,5 @@
             </tr>
         </ng-container>
     </table>
-
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons ></mat-paginator>
 </div>

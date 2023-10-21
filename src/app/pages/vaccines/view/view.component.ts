@@ -1,8 +1,10 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Vaccine } from 'src/app/interfaces/vaccine';
 import { ApiService } from 'src/app/services/api.service';
 import { LoginService } from 'src/app/services/auth/LoginService';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-view-vaccines',
@@ -17,7 +19,7 @@ import { LoginService } from 'src/app/services/auth/LoginService';
   ],
 })
 export class ViewComponent implements OnInit{
-  dataSource: Vaccine[] = [];
+  dataSource!: MatTableDataSource<Vaccine>;
   columnsToDisplay = ['name', 'date', 'next_date' , 'pet_name'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   columnDisplayNames: { [key: string]: string } = {
@@ -27,11 +29,13 @@ export class ViewComponent implements OnInit{
     pet_name: 'Nombre de la Mascota'
   };
   expandedElement: Vaccine | null | undefined;
-
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  
   constructor(apiService: ApiService, loginService: LoginService){
     apiService.getVacunaByOwnerId(loginService.getUserId()).subscribe(
       (res)=>{
-        this.dataSource = res
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
       }
     );
 

@@ -42,8 +42,8 @@ export class ApiService {
       catchError(this.handleError)
     )
   }
-  vacuna(): Observable<any> {
-    return this.http.get(`${config.apiUrl}/vacuna/`).pipe(
+  vacuna(): Observable<Vaccine[]> {
+    return this.http.get<Vaccine[]>(`${config.apiUrl}/vacuna/`).pipe(
       map((response: any) => response.map(
         (x: any) => {
           return {

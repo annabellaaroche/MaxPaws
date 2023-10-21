@@ -9,7 +9,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableModule, } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { HomeComponent } from './pages/home/home.component';
 import { MatCardModule } from '@angular/material/card';
@@ -29,7 +29,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AboutComponent } from './pages/about/about.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
+import { MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -63,6 +63,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSlideToggleModule,
+    MatPaginatorModule
   ],
   providers: [
     {

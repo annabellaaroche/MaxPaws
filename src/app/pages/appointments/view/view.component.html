@@ -53,5 +53,6 @@
         </tr>
         <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="table-detail-row"></tr>
     </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons ></mat-paginator>
 
 </div>
