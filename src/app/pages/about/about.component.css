@@ -6,10 +6,6 @@ body, h1, h2, h3, p, ul, li, a {
 }
 
 /* Estilos generales */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-}
 
 header {
     background-color: #333;
@@ -17,30 +13,9 @@ header {
     padding: 20px 0;
 }
 
-nav {
-    max-width: 960px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 .logo h1 {
-    font-size: 24px;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-}
-
-.nav-links li {
-    margin-right: 20px;
-}
-
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
+    font-size: auto;
 }
 
 .hero {
@@ -48,7 +23,7 @@ nav {
     background-size:100% auto;
     background-position: center;
     text-align: center;
-    padding: 100px 0;
+    padding: 20px 0;
     color: #fefefe;
     text-shadow: 0 0 3px #ffae00, 0 0 8px #cc00ffdd;
     
@@ -60,7 +35,7 @@ nav {
 }
 
 .hero p {
-    font-size: 18px;
+    font-size: 25px;
 }
 
 .cta-button {
@@ -86,7 +61,7 @@ nav {
 
 .feature {
     flex: 1;
-    background-color: #fff;
+    background-color: var(--bs-secondary-bg);
     padding: 30px;
     border-radius: 5px;
     text-align: center;

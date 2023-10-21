@@ -1,16 +1,13 @@
 .example-card {
   max-width: 400px;
   margin: 2px;
-  background: var(--background-color);
-  color: var(--text-color);
+  background: var(--bs-secondary-bg);
 }
 
 .card-images{
   max-height: 50%;
   max-width: 60%;
   position: relative;
-  background: var(--background-color);
-  color: var(--text-color);
 }
 
 mat-card-subtitle{

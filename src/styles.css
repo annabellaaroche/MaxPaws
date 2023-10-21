@@ -1,73 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
 
-html,
-body {
-    --text-color: #222;
-    --background-color: #fff;
-}
-
-.dark-theme * {
-    --text-color: #fff;
-    background-color: #222 !important;
-  }
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background: var(--background-color);
-    color: var(--text-color);
+    
+    
 }
 
+h3 {
+    font-weight: bold;
+}
 .container {
     padding: 15px;
-    background: var(--background-color);
-    color: var(--text-color);
-}
-
-th{
-    background: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--bs-body-bg) ;
+    color: var(--bs-body-color)
 }
 
 table {
     width: 100%;
-    background: var(--background-color);
-    color: var(--text-color);
 }
 
 tr.table-detail-row{
     height: 0;
-    background: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--bs-body-bg) ;
+    color: var(--bs-body-color);
 }
 
 tr.table-element-row:not(.table-expanded-row):hover {
-    background: var(--background-color);
-    color: var(--text-color);
-
+    background-color: var(--bs-secondary-bg) ;
+    color: var(--bs-body-color)
 }
 
 tr.table-element-row:not(.table-expanded-row):active {
-    background: var(--background-color);
-    color: var(--text-color);
-
+    background-color: var(--bs-body-bg) ;
+    color: var(--bs-body-color);
 }
 
 .table-element-row td,th {
     border-bottom-width: 0;
-    background: var(--background-color);
-    color: var(--text-color);
 }
 .mat-mdc-table{
-    background: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
 }
 
 .table-element-detail {
     overflow: hidden;
     display: flex;
-    background: var(--background-color);
-    color: var(--text-color);
-
+    background-color: var(--bs-body-bg) ;
+    color: var(--bs-body-color);  
 }
 
 .table-element-diagram {
@@ -78,31 +59,27 @@ tr.table-element-row:not(.table-expanded-row):active {
     margin: 8px 0;
     height: 104px;
     display: none;
-    background: var(--background-color);
-    color: var(--text-color);
-
 }
 
 .table-element-symbol {
     font-weight: bold;
     font-size: 40px;
     line-height: normal;
-    background: var(--background-color);
-    color: var(--text-color);    
-
+    background-color: var(--bs-body-bg) ;
+    color: var(--bs-body-color);
 }
 
 .table-element-description {
     padding: 16px;
-    background: var(--background-color);
-    color: var(--text-color);    
+    
+        
 
 }
 
 .table-element-description-attribution {
     opacity: 0.5;
-    background: var(--background-color);
-    color: var(--text-color);
+    
+    
 }
 
 /*Formularios Validaciones*/
@@ -122,22 +99,18 @@ mat-select.ng-invalid.ng-touched{
 
 mat-label {
     padding-left: 3px;
-    color: var(--text-color);
-    background: var(--background-color);
+    
+    
 }
 
   
 .container {
     overflow-x: auto;
-    background: var(--background-color);
-    color: var(--text-color);
 }
 
 table.responsive {
     display: none;
-    color: var(--text-color);
-    background: var(--background-color);
-
+    color:var(--bs-body-color)
 }
 
 table.mobile {
@@ -155,24 +128,18 @@ table.mobile>tr.hidden>td {
     padding-bottom: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
-    border-top: 0px solid var(--text-color);
+    border-top: 0px solid rgba(0,0,0,0);
     border-bottom: 0px;
-    background: var(--background-color);
-    color: var(--text-color);
 }
 
 table.mobile>tr.header {
     cursor: pointer;
-    font-weight:500;
-    border-top: 1px solid var(--text-color);
-    background: var(--background-color);
-    color: var(--text-color);
+    font-weight: bold;
+    border-top: 1px solid rgba(169,169,169,1);
 }
 
 table.mobile>tr.header:first-child {
     border-top: none;
-    background: var(--background-color);
-    color: var(--text-color);
 }
 
 table.mobile>tr.header>td {
@@ -245,10 +212,8 @@ table.mobile>tr>td {
 
 table.mobile>tr.header,
 table.mobile>tr>td>span {
-    font-weight:500;
+    font-weight:500;    
     text-transform: capitalize;
-    background: var(--background-color);
-    color: var(--text-color);
 }
 
 table.mobile>tr:not(.header)>td {
@@ -259,12 +224,9 @@ table.mobile>tr:not(.header)>td {
 @media screen and (min-width: 500px) {
     table.responsive {
         display:table;
-        color: var(--text-color);
     }
-
     table.mobile {
         visibility: collapse;
     }
-} 
-
+}
 

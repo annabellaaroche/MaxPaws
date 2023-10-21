@@ -8,6 +8,7 @@
 
 # Node
 /node_modules
+/node_modules_respaldo
 npm-debug.log
 yarn-error.log
 
