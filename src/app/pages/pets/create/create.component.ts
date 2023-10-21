@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { LoginService } from 'src/app/services/auth/LoginService';
 
@@ -10,13 +11,14 @@ import { LoginService } from 'src/app/services/auth/LoginService';
 })
 export class CreateComponent {
 
+  errorMessage:string="";
   createPetForm: FormGroup;
   pets:any[]=[];
   raza:any[]=[];
   size:any[]=[];
   gender = [{id:1,name:'Macho'},{id:1,name:'Hembra'}]
   constructor(
-    public formBuilder: FormBuilder, private loginService: LoginService, private apiService: ApiService
+    public formBuilder: FormBuilder, private loginService: LoginService, private apiService: ApiService,private router:Router
   ) {
     this.createPetForm = this.formBuilder.group({
       name_pet: ['', [
@@ -85,10 +87,10 @@ export class CreateComponent {
     value.owner = this.loginService.getUserId();
     this.apiService.crearMascota(value).subscribe(
       (next)=>{
-        console.log('Exito');
+        this.router.navigateByUrl('/home');
       },
       (error)=>{
-        console.log('Error');
+        this.errorMessage=error;
       }
     );
   }

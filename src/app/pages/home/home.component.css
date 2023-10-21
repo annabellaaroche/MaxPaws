@@ -1,7 +1,7 @@
 .example-card {
   max-width: 400px;
   margin: 2px;
-  background: var(--bs-secondary-bg);
+  background: var(--bs-tertiary-bg);
 }
 
 .card-images{
@@ -11,6 +11,5 @@
 }
 
 mat-card-subtitle{
-  background: var(--background-color);
   color: var(--text-color);
 }

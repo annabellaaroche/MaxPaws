@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { LoginService } from 'src/app/services/auth/LoginService';
 
@@ -12,7 +13,7 @@ export class CreateComponent {
   editForm: FormGroup;
   pets: any[] = [];
   constructor(
-    public formBuilder: FormBuilder, private loginService: LoginService, private apiService: ApiService
+    public formBuilder: FormBuilder, private loginService: LoginService, private apiService: ApiService,private router:Router
   ) {
     this.editForm = this.formBuilder.group({
       fecha_cita: [null, [
@@ -47,7 +48,7 @@ export class CreateComponent {
     this.apiService.crearCita(value).subscribe(
       (next) => {
         console.log('Exito');
-
+        this.router.navigateByUrl('/appointments');
       },
       (error) => {
         console.log('Error');

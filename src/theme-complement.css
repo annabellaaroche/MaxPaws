@@ -1911,7 +1911,7 @@ html {
 }
 
 html {
-    --mat-table-background-color: var(--bs-secondary-bg-subtle);
+    --mat-table-background-color: var(--bs-tertiary-bg);
     --mat-table-header-headline-color: var(--bs-body-color);
     --mat-table-row-item-label-text-color: var(--bs-body-color);
     --mat-table-row-item-outline-color: rgba(0, 0, 0, 0.12)

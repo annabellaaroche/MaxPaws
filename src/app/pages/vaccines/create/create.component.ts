@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { LoginService } from 'src/app/services/auth/LoginService';
 
@@ -13,7 +14,7 @@ export class CreateComponent {
   pets:any[]=[];
   message:string="";
   constructor(
-    public formBuilder: FormBuilder, private loginService: LoginService, private apiService: ApiService
+    public formBuilder: FormBuilder, private loginService: LoginService, private apiService: ApiService, private router:Router
   ) {
     this.createVaccineForm = this.formBuilder.group({
       name_vacuna: ['', [
@@ -51,6 +52,7 @@ export class CreateComponent {
         console.log('Exito');
         this.message="true";
         this.createVaccineForm.reset();
+        this.router.navigateByUrl('/vaccines');
       },
       (error)=>{
         console.log('Error');
