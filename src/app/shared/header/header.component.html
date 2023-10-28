@@ -1,13 +1,13 @@
 
 
-<mat-toolbar color="primary" class="toolbar">
+<mat-toolbar color="primary" class="toolbar" >
  <!--<button mat-icon-button aria-label="Abre/Cierra el menú" (click)="toggleSidenav()">
     <mat-icon aria-hidden="showSidenav" aria-label="Sidenav" [fontIcon]="(this.sidenavToggle) ? 'close':'menu'">
     </mat-icon>
   </button>--> 
 
-  <span routerLink="home" class="logo-link" *ngIf="userLoginOn"> <img src="https://i.ibb.co/FVrqqMX/1-removebg-preview.png" alt=""   width="10%" > MaxPaws</span>
-  <span routerLink="/" class="logo-link" *ngIf="!userLoginOn"> <img src="https://i.ibb.co/FVrqqMX/1-removebg-preview.png" alt=""   width="10%" > MaxPaws</span>
+  <span routerLink="home" class="logo-link" *ngIf="userLoginOn"> <img src="https://i.ibb.co/FVrqqMX/1-removebg-preview.png" alt=""   width="15%" > MaxPaws</span>
+  <span routerLink="/" class="logo-link" *ngIf="!userLoginOn"> <img src="https://i.ibb.co/FVrqqMX/1-removebg-preview.png" alt=""   width="15%" > MaxPaws</span>
   <span class="spacer"></span>
   <button class="toolbar-menu-option" routerLink="home" mat-button aria-label="Home" *ngIf="userLoginOn">
     Home
@@ -55,6 +55,7 @@
       <span>Registrarse</span>
     </button>
   </mat-menu> 
+
 </ng-container>
 <ng-container >
   <mat-slide-toggle class="mat-mdc-slide-toggle mat-warn" (click)="toggleDarkTheme()"></mat-slide-toggle>

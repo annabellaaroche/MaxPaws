@@ -44,17 +44,6 @@ export class CreateComponent {
       ]],
     });
     
- //   this.apiService.pet(this.loginService.getUserId()).subscribe(
-    this.apiService.pet().subscribe(
-      (res)=>{
-        this.pets=res;
-      },
-      (err)=>{
-        //MANEJAR ERROR
-        console.log(err);
-
-      }
-    )
 
     this.apiService.raza().subscribe(
       (res)=>{

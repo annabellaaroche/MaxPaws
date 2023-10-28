@@ -3,6 +3,8 @@
     <mat-card-content >
       <form [formGroup]="registerForm">
         <h2>Registrarse</h2>
+          <p>Los campos que poseen * son obligatorios.</p>
+
         <mat-error *ngIf="!loginValid">
             {{registerError}}
           </mat-error>

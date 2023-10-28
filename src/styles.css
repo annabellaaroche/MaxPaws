@@ -29,11 +29,13 @@ tr.table-detail-row{
 tr.table-element-row:not(.table-expanded-row):hover {
     background-color: var(--bs-secondary-bg) ;
     color: var(--bs-body-color)
+
 }
 
 tr.table-element-row:not(.table-expanded-row):active {
     background-color: var(--bs-body-bg) ;
     color: var(--bs-body-color);
+    
 }
 
 .table-element-row td,th {
@@ -44,11 +46,16 @@ tr.table-element-row:not(.table-expanded-row):active {
     color: var(--bs-body-color);
 }
 
+.mdc-data-table__cell{
+    text-overflow:clip;
+}
+
 .table-element-detail {
     overflow: hidden;
     display: flex;
     background-color: var(--bs-body-bg) ;
-    color: var(--bs-body-color);  
+    color: var(--bs-body-color); 
+    overflow-wrap: anywhere; 
 }
 
 .table-element-diagram {
@@ -71,15 +78,10 @@ tr.table-element-row:not(.table-expanded-row):active {
 
 .table-element-description {
     padding: 16px;
-    
-        
-
 }
 
 .table-element-description-attribution {
     opacity: 0.5;
-    
-    
 }
 
 /*Formularios Validaciones*/
@@ -99,11 +101,8 @@ mat-select.ng-invalid.ng-touched{
 
 mat-label {
     padding-left: 3px;
-    
-    
 }
 
-  
 .container {
     overflow-x: auto;
 }

@@ -55,10 +55,10 @@
         <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="table-detail-row"></tr>
     </table>
 
-    <table class="mat-elevation-z8 mobile">
+    <table *ngIf="dataSource"class="mat-elevation-z8 mobile">
         <ng-container  *ngFor="let data of dataSource.data;index as columnIndex" >
             <tr class="header collapsed">
-                <td>
+                <td >
                     {{data.name || "Column " + (columnIndex + 1)}}
                 </td>
             </tr>
